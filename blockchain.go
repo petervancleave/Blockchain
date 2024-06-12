@@ -58,7 +58,7 @@ func (b *Block) mineBlock() {
 	}
 }
 
-// create genesis block in the blockchain
+// create genesis block 
 func createGenesisBlock() *Block {
 	return &Block{
 		Timestamp: time.Now().Unix(),
