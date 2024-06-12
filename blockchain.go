@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// block represents a block in the blockchain
+
 type Block struct {
 	Timestamp int64
 	Data      string
@@ -16,12 +16,12 @@ type Block struct {
 	Nonce     int
 }
 
-// blockchain represents the entire blockchain
+
 type Blockchain struct {
 	Blocks []*Block
 }
 
-// calculate the hash for given block
+
 func (b *Block) calculateHash() {
 	hash := sha256.New()
 	hash.Write([]byte(fmt.Sprintf("%d%s%s%s%d", b.Timestamp, b.Data, b.PrevHash, b.Hash, b.Nonce)))
@@ -29,7 +29,7 @@ func (b *Block) calculateHash() {
 	b.Hash = hex.EncodeToString(calculatedHash)
 }
 
-// create a new block in the blockchain
+
 func (bc *Blockchain) createBlock(data string) *Block {
 	prevBlock := bc.Blocks[len(bc.Blocks)-1]
 	newBlock := &Block{
@@ -44,7 +44,7 @@ func (bc *Blockchain) createBlock(data string) *Block {
 	return newBlock
 }
 
-// mine a block
+
 func (b *Block) mineBlock() {
 	for {
 		b.Nonce++
